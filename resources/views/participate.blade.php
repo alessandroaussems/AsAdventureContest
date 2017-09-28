@@ -7,90 +7,39 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Participate</div>
 
-                    <div class="panel-body">
-                        <form class="form-horizontal" method="POST" action="{{ route('login') }}">
-                            {{ csrf_field() }}
+                    {{ Html::ul($errors->all()) }}
 
-                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="name" class="col-md-4 control-label">Name</label>
+                    {{ Form::open(array('url' => 'participants')) }}
 
-                                <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="name" value="" required autofocus>
+                    <div class="form-group">
+                        {{ Form::label('name', 'Name') }}
+                        {{ Form::text('name', Input::old('name'), array('class' => 'form-control')) }}
+                    </div>
 
-                                    @if ($errors->has('email'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
+                    <div class="form-group">
+                        {{ Form::label('email', 'Email') }}
+                        {{ Form::email('email', Input::old('email'), array('class' => 'form-control')) }}
+                    </div>
 
-                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                    <div class="form-group">
+                        {{ Form::label('adress', 'Adress') }}
+                        {{ Form::text('adress', Input::old('adress'), array('class' => 'form-control')) }}
+                    </div>
 
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control" name="email" value="" required>
+                    <div class="form-group">
+                        {{ Form::label('city', 'City') }}
+                        {{ Form::text('city', Input::old('city'), array('class' => 'form-control')) }}
+                    </div>
 
-                                    @if ($errors->has('email'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
+                    <div class="form-group">
+                        {{ Form::label('question', 'What is MCT?') }}
+                        {{ Form::text('question', Input::old('question'), array('class' => 'form-control')) }}
+                    </div>
 
-                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="adress" class="col-md-4 control-label">Adress</label>
+                    {{ Form::submit('Participate!', array('class' => 'btn btn-primary')) }}
 
-                                <div class="col-md-6">
-                                    <input id="adress" type="text" class="form-control" name="adress" value="" required>
+                    {{ Form::close() }}
 
-                                    @if ($errors->has('email'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="city" class="col-md-4 control-label">City</label>
-
-                                <div class="col-md-6">
-                                    <input id="city" type="text" class="form-control" name="city" value="" required>
-
-                                    @if ($errors->has('email'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="question" class="col-md-4 control-label">What does MCT stand for?</label>
-
-                                <div class="col-md-6">
-                                    <input id="question" type="text" class="form-control" name="question" value="" required>
-
-                                    @if ($errors->has('email'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-
-
-
-                            <div class="form-group">
-                                <div class="col-md-8 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        Participate!
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
                     </div>
                 </div>
             </div>
