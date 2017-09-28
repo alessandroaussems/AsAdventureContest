@@ -15,6 +15,7 @@
         </thead>
         <tbody>
         @foreach($participants as $key => $value)
+            @if($value->enabled==1)
             <tr>
                 <td>{{ $value->id }}</td>
                 <td>{{ $value->name }}</td>
@@ -26,10 +27,15 @@
                 <td>
 
                     <!-- show the nerd (uses the show method found at GET /nerds/{id} -->
-                    <a class="btn btn-small btn-danger" href="{{ URL::to('nerds/' . $value->id) }}">Disable</a>
+                    <form ></form>
+                    {{ Form::open(array('url' => 'participants/' . $value->id, 'class' => 'pull-right')) }}
+                    {{ Form::hidden('_method', 'DELETE') }}
+                    {{ Form::submit('Delete this Nerd', array('class' => 'btn btn-danger')) }}
+                    {{ Form::close() }}
 
                 </td>
             </tr>
+            @endif
         @endforeach
         </tbody>
     </table>

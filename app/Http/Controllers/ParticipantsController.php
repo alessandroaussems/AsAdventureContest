@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Participant;
-use Illuminate\Support\Facades\View;
-
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 
 class ParticipantsController extends Controller
 {
@@ -29,5 +28,16 @@ class ParticipantsController extends Controller
 
         return view("participants")->with('participants',$participants);
 
+    }
+    public function destroy($id)
+    {
+        // delete
+        $participant = Participant::find($id);
+        $participant->enabled       = 0;
+        $participant->save();
+
+        // redirect
+        Session::flash('message', 'Successfully disabled participant!');
+        return Redirect::to('participants');
     }
 }
