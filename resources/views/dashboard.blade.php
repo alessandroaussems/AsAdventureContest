@@ -13,8 +13,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                     <ul>
+                         <li><a href="{{ route('register') }}">Register a new user</a></li>
+                         <li><a href="/">View participants</a></li>
 
-                    You are logged in!
+                     </ul>
                 </div>
             </div>
         </div>

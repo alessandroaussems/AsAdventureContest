@@ -9,6 +9,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
         <!-- Styles -->
         <style>
@@ -69,10 +70,9 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/dashboard') }}">Dashboard</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
                     @endauth
                 </div>
             @endif
@@ -81,6 +81,8 @@
                 <div class="title m-b-md">
                     {{ config('app.name', 'Laravel') }}
                 </div>
+                <a href="/participate" class="btn btn-primary">Participate!</a>
+
             </div>
         </div>
     </body>
