@@ -22,3 +22,5 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 Route::get('/participate', function () {
     return view('participate');
 });
+
+Route::resource('participants', 'ParticipantsController');
