@@ -18,8 +18,7 @@ class ParticipantsController extends Controller
     public function __construct()
     {
         //$this->middleware('auth');
-        $this->middleware('auth')->only('index');
-        $this->middleware('auth')->only('destroy');
+        $this->middleware('auth', ['except' => ['create','store']]);
     }
 
     /**
@@ -36,7 +35,6 @@ class ParticipantsController extends Controller
     }
     public function create()
     {
-        // load the create form (app/views/nerds/create.blade.php)
         return view("participate");
     }
     public function store()
@@ -45,7 +43,7 @@ class ParticipantsController extends Controller
         // read more on validation at http://laravel.com/docs/validation
         $rules = array(
             'name'       => 'required',
-            'email'      => 'required|email',
+            'email'      => 'required|email|unique:participants',
             'adress'     => 'required' ,
             'city'       => 'required',
             'question'   => 'required',
@@ -72,7 +70,7 @@ class ParticipantsController extends Controller
 
             // redirect
             Session::flash('message', 'Successfully participated!');
-            return Redirect::to('participants');
+            return Redirect::to('/');
         }
     }
     public function destroy($id)
