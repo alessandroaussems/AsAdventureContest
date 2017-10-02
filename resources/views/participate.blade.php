@@ -32,7 +32,7 @@
                     </div>
 
                     <div class="form-group">
-                        {{ Form::label('question', 'What is MCT?') }}
+                        {{ Form::label('question', 'What is the exact price of the article with productcode: 4432D70003?') }}
                         {{ Form::text('question', Input::old('question'), array('class' => 'form-control')) }}
                     </div>
 

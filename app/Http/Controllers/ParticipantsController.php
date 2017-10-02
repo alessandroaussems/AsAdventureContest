@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Request;
 use Input;
+use Carbon\Carbon;
+use Excel;
+
 
 class ParticipantsController extends Controller
 {
@@ -28,7 +31,7 @@ class ParticipantsController extends Controller
      */
     public function index()
     {
-        $participants = Participant::all();
+        $participants = Participant::where('enabled',1)->get();
 
         return view("participants")->with('participants',$participants);
 
@@ -65,6 +68,7 @@ class ParticipantsController extends Controller
             $participant->city       = Input::get('city');
             $participant->question   = Input::get('question');
             $participant->ip         = Request::ip();
+            $participant->date_participated = Carbon::now();
 
             $participant->save();
 
@@ -83,5 +87,17 @@ class ParticipantsController extends Controller
         // redirect
         Session::flash('message', 'Successfully disabled participant!');
         return Redirect::to('participants');
+    }
+    public function excel()
+    {
+        Excel::create('Participants', function($excel) {
+
+            $excel->sheet('Participants', function($sheet) {
+
+                $sheet->fromArray(Participant::where('enabled',1)->get(), null, 'A1', false, false);
+
+            });
+
+        })->download('xlsx');
     }
 }

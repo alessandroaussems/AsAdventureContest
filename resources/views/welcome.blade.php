@@ -72,15 +72,17 @@
                     @auth
                         <a href="{{ url('/dashboard') }}">Dashboard</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('login') }}">Admin</a>
                     @endauth
                 </div>
             @endif
 
             <div class="content">
                 <div class="title m-b-md">
+                    <img src="/img/logo.png" alt="Logo van As Adventure."><br>
                     {{ config('app.name', 'Laravel') }}
                 </div>
+                <p>Win a voucher of €500!</p>
                 <a href="/participate" class="btn btn-primary">Participate!</a>
 
             </div>

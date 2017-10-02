@@ -24,3 +24,5 @@ Route::get('/participate', function () {
 });
 
 Route::resource('participants', 'ParticipantsController');
+
+Route::get('excel','ParticipantsController@excel')->name('excel')->middleware("auth");
