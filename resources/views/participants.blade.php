@@ -11,6 +11,7 @@
             <td>City</td>
             <td>IP</td>
             <td>Question</td>
+            <td>Period</td>
             <td>Action</td>
         </tr>
         </thead>
@@ -23,6 +24,7 @@
                 <td>{{ $value->city }}</td>
                 <td>{{ $value->ip }}</td>
                 <td>{{ $value->question }}</td>
+                <td>{{ $value->period }}</td>
                 <td>
 
                     <!-- show the nerd (uses the show method found at GET /nerds/{id} -->

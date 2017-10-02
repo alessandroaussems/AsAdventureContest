@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Participant;
+use App\Period;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
@@ -42,6 +43,9 @@ class ParticipantsController extends Controller
     }
     public function store()
     {
+        $periods=Period::all();
+        $now=Carbon::now();
+        $period=0;
         // validate
         // read more on validation at http://laravel.com/docs/validation
         $rules = array(
@@ -56,10 +60,18 @@ class ParticipantsController extends Controller
 
         // process the login
         if ($validator->fails()) {
-            return Redirect::to('participants/create')
+            return Redirect::to('participate')
                 ->withErrors($validator)
                 ->withInput();
-        } else {
+        } else
+            {
+                foreach ($periods as $key => $value)
+                {
+                    if($value->startdate <= $now && $now <= $value->enddate)
+                    {
+                        $period=$value->id;
+                    }
+                }
             // store
             $participant = new Participant();
             $participant->name       = Input::get('name');
@@ -68,7 +80,8 @@ class ParticipantsController extends Controller
             $participant->city       = Input::get('city');
             $participant->question   = Input::get('question');
             $participant->ip         = Request::ip();
-            $participant->date_participated = Carbon::now();
+            $participant->date_participated = $now;
+            $participant->period=$period;
 
             $participant->save();
 
