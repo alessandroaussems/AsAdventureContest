@@ -84,6 +84,13 @@
                 </div>
                 <p>Win a voucher of €500!</p>
                 <a href="/participate" class="btn btn-primary">Participate!</a>
+                <h2>Vorige winnaars:</h2>
+                <ul id="previouswinners">
+                    @foreach($winners as $key => $value)
+                    <li>Winnaar {{$value->title}}: {{$value->name}}</li>
+                    @endforeach
+
+                </ul>
 
             </div>
         </div>
