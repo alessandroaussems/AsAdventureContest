@@ -14,7 +14,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
         html, body {
-            background: url(img/background.jpg) no-repeat center center fixed;
+            background: url(img/background_75.png) no-repeat center center fixed;
             background-size:100% 100%;
             color: #636b6f;
             font-family: 'Raleway', sans-serif;
@@ -80,7 +80,7 @@
                     </div>
 
                     <div class="form-group">
-                        {{ Form::label('question', 'What is the exact price of the article with productcode: 4432D70003?') }}
+                        {{ Form::label('question', 'What year is AS Adventure founded?') }}
                         {{ Form::text('question', Input::old('question'), array('class' => 'form-control')) }}
                     </div>
 

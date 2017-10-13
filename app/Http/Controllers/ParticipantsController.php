@@ -72,13 +72,22 @@ class ParticipantsController extends Controller
                         $period=$value->id;
                     }
                 }
+                $question=Input::get('question');
+                if($question=="1995")
+                {
+                    $isquestioncorrect=true;
+                }
+                else
+                {
+                    $isquestioncorrect=false;
+                }
             // store
             $participant = new Participant();
             $participant->name       = Input::get('name');
             $participant->email      = Input::get('email');
             $participant->adress     = Input::get('adress');
             $participant->city       = Input::get('city');
-            $participant->question   = Input::get('question');
+            $participant->question   = $isquestioncorrect;
             $participant->ip         = Request::ip();
             $participant->date_participated = $now;
             $participant->period=$period;
