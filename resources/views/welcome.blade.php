@@ -82,6 +82,12 @@
             {
                 color: white;
             }
+            .winner
+            {
+                color: white;
+                font-size: 14pt;
+                font-weight: bold;
+            }
 
         </style>
     </head>
@@ -107,7 +113,7 @@
                 <h2>Vorige winnaars:</h2>
                 <ul id="previouswinners">
                     @foreach($winners as $key => $value)
-                    <li>Winnaar {{$value->title}}: {{$value->name}}</li>
+                    <li class="winner">Winnaar {{$value->title}}: {{$value->name}}</li>
                     @endforeach
                 </ul>
                 @endif
