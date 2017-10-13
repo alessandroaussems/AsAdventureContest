@@ -27,7 +27,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
-        $schedule->command('pick:winner')->dailyAt('19:47');
+        $schedule->command('pick:winner')->dailyAt('20:21'); //we should use dailyAt but this is not working;
     }
 
     /**
