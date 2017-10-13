@@ -51,7 +51,7 @@ class Winner extends Command
                 if(Winners::where('period',$value->id)->get()->isEmpty())
                 {
                     echo "NEW WINNER";
-                    $winnerofparticipants=Participant::where("question","true")->orderByRaw("RAND()")
+                    $winnerofparticipants=Participant::where("question",1)->orderByRaw("RAND()")
                         ->take(1)
                         ->get();
                     $winner = new Winners();
