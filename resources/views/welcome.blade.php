@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'Laravel') }} | Contest</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -14,10 +14,12 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
+                background: url(img/background.jpg) no-repeat center center fixed;
+                background-size:100% 100%;
                 color: #636b6f;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
+                color: white;
                 height: 100vh;
                 margin: 0;
             }
@@ -63,6 +65,24 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            .participate
+            {
+                background-color: orange;
+                border-color: orange;
+                color: black;
+                border-radius: 0px;
+            }
+            .participate:hover
+            {
+                background-color: black;
+                border-color: black;
+                color: orange;
+            }
+            .top-right > a
+            {
+                color: white;
+            }
+
         </style>
     </head>
     <body>
@@ -80,10 +100,9 @@
             <div class="content">
                 <div class="title m-b-md">
                     <img src="/img/logo.png" alt="Logo van As Adventure."><br>
-                    {{ config('app.name', 'Laravel') }}
+                    <h1>Win a voucher of €500</h1>
                 </div>
-                <p>Win a voucher of €500!</p>
-                <a href="/participate" class="btn btn-primary">Participate!</a>
+                <a href="/participate" class="btn btn-primary participate">Participate!</a>
                 @if(count($winners) > 0)
                 <h2>Vorige winnaars:</h2>
                 <ul id="previouswinners">

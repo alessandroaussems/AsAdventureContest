@@ -1,11 +1,59 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="{{ app()->getLocale() }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-@section('content')
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        html, body {
+            background: url(img/background.jpg) no-repeat center center fixed;
+            background-size:100% 100%;
+            color: #636b6f;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 100;
+            color: white;
+            height: 100vh;
+            margin: 0;
+        }
+        .top-right > a
+        {
+            color: white;
+        }
+        .titleparticipate
+        {
+            text-align: center;
+        }
+        .participate
+        {
+            background-color: orange;
+            border-color: orange;
+            color: black;
+            border-radius: 0px;
+            margin: 0 auto;
+        }
+        .participate:hover
+        {
+            background-color: black;
+            border-color: black;
+            color: orange;
+        }
+
+    </style>
+</head>
+<body>
+<div id="app">
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Participate</div>
+                    <div class="titleparticipate"><h1>Participate!</h1></div>
 
                     {{ Html::ul($errors->all()) }}
 
@@ -36,13 +84,16 @@
                         {{ Form::text('question', Input::old('question'), array('class' => 'form-control')) }}
                     </div>
 
-                    {{ Form::submit('Participate!', array('class' => 'btn btn-primary')) }}
+                    {{ Form::submit('Participate!', array('class' => 'btn btn-primary participate')) }}
 
                     {{ Form::close() }}
 
-                    </div>
                 </div>
-            </div>
         </div>
     </div>
-@endsection
+</div>
+</div>
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}"></script>
+</body>
+</html>
