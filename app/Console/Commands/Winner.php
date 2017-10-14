@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Console\Commands;
-
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Console\Command;
 use Carbon\Carbon;
 use App\Period;
@@ -58,6 +58,14 @@ class Winner extends Command
                     $winner->participant     = $winnerofparticipants[0]->id;
                     $winner->period          = $period;
                     $winner->save();
+
+                    $texttosend="Er is een nieuwe winnaar! Zijn naam is: ".$winnerofparticipants[0]->name;
+                    Mail::raw($texttosend, function($message)
+                    {
+                        $message->subject('There is a new winner! AsAdventure Contest');
+                        $message->from('no-reply@asadventurecontest.be', 'As Adventure Contest');
+                        $message->to('alessandro.aussems@student.kdg.be');
+                    });
                 }
             }
         }

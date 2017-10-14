@@ -110,7 +110,7 @@
                 </div>
                 <a href="/participate" class="btn btn-primary participate">Participate!</a>
                 @if(count($winners) > 0)
-                <h2>Vorige winnaars:</h2>
+                <h2>Previous winners:</h2>
                 <ul id="previouswinners">
                     @foreach($winners as $key => $value)
                     <li class="winner">Winnaar {{$value->title}}: {{$value->name}}</li>
