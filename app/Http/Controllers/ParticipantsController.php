@@ -10,6 +10,7 @@ use Request;
 use Input;
 use Carbon\Carbon;
 use Excel;
+use Illuminate\Support\Facades\Mail;
 
 
 class ParticipantsController extends Controller
@@ -119,7 +120,13 @@ class ParticipantsController extends Controller
                 $sheet->fromArray(Participant::where('enabled',1)->get(), null, 'A1', false, false);
 
             });
-
-        })->download('xlsx');
+        })->download("xlsx"); //->store("xlsx", false, true)['full'];
+        Mail::raw("In attachment excelfile of participants ", function($message)
+        {
+            $message->subject('ExcelFile Participants!');
+            $message->from('no-reply@asadventurecontest.be', 'As Adventure Contest');
+            $message->to('alessandro.aussems@student.kdg.be');
+            //$message->attach("storage/exports/Participants.xlsx", 'Participants.xlsx');
+        });
     }
 }
