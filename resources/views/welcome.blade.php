@@ -113,7 +113,7 @@
                 <h2>Previous winners:</h2>
                 <ul id="previouswinners">
                     @foreach($winners as $key => $value)
-                    <li class="winner">Winnaar {{$value->title}}: {{$value->name}}</li>
+                    <li class="winner">Winner {{$value->title}}: {{$value->name}}</li>
                     @endforeach
                 </ul>
                 @endif
