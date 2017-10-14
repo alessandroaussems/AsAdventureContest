@@ -45,6 +45,12 @@
             border-color: black;
             color: orange;
         }
+        .errors
+        {
+            padding: 0px;
+            list-style-type: none;
+            color: red;
+        }
 
     </style>
 </head>
@@ -55,7 +61,7 @@
             <div class="col-md-8 col-md-offset-2">
                     <div class="titleparticipate"><h1>Participate!</h1></div>
 
-                    {{ Html::ul($errors->all()) }}
+                    {{ Html::ul($errors->all(),array('class' => 'errors')) }}
 
                     {{ Form::open(array('url' => 'participants')) }}
 
