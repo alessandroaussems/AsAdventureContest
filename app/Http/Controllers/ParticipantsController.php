@@ -97,7 +97,7 @@ class ParticipantsController extends Controller
 
             // redirect
             Session::flash('message', 'Successfully participated!');
-            return Redirect::to('/');
+            return Redirect::to('/participate');
         }
     }
     public function destroy($id)
@@ -108,7 +108,7 @@ class ParticipantsController extends Controller
         $participant->save();
 
         // redirect
-        Session::flash('message', 'Successfully disabled participant!');
+        Session::flash('message', 'Successfully deleted participant!');
         return Redirect::to('participants');
     }
     public function excel()

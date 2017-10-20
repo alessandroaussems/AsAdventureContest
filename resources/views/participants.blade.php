@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+    @if (Session::has('message'))
+        <div class="alert alert-success">{{ Session::get('message') }}</div>
+    @endif
     <a href="{{ route("excel") }}" class="btn btn-info pull-right">To Excel.</a>
     <table class="table table-striped table-bordered">
         <thead>
