@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         'App\Console\Commands\Winner',
+        'App\Console\Commands\SendEmailExcel',
         //
     ];
 
@@ -27,7 +28,8 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
-        $schedule->command('pick:winner')->dailyAt('20:21'); //we should use dailyAt but this is not working;
+        $schedule->command('pick:winner')->dailyAt('13:00'); //we should use dailyAt but this is not working;
+        $schedule->command('send:excel')->dailyAt('13:00');//we should use dailyAt but this is not working;
     }
 
     /**
