@@ -1,6 +1,6 @@
 # As Adventure Contest
 - A fictional contest where you can win a voucher of €500.
-- Online version: 
+- Online version: https://asadventurecontest.alessandro.aussems.mtantwerp.eu/
 ### Deploy
 - Create a .env file based on the .env.example
 - Use the database template in this repository or run "php artisan migrate"
