@@ -28,8 +28,8 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
-        $schedule->command('pick:winner')->dailyAt('13:00'); //we should use dailyAt but this is not working;
-        $schedule->command('send:excel')->dailyAt('13:00');//we should use dailyAt but this is not working;
+        $schedule->command('pick:winner')->dailyAt('21:59'); // because we are in brussels time + 2H so this will execute on 23:59
+        $schedule->command('send:excel')->dailyAt('21:59');// because we are in brussels time + 2H so this will execute on 23:59
     }
 
     /**
