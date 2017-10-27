@@ -11,6 +11,7 @@ use Input;
 use Carbon\Carbon;
 use Excel;
 use Illuminate\Support\Facades\Mail;
+use Socialite;
 
 
 class ParticipantsController extends Controller
@@ -23,7 +24,7 @@ class ParticipantsController extends Controller
     public function __construct()
     {
         //$this->middleware('auth');
-        $this->middleware('auth', ['except' => ['create','store']]);
+        $this->middleware('auth', ['except' => ['create','store','redirectToProvider','handleProviderCallback']]);
     }
 
     /**
@@ -38,9 +39,18 @@ class ParticipantsController extends Controller
         return view("participants")->with('participants',$participants);
 
     }
-    public function create()
+    public function redirectToProvider()
     {
-        return view("participate");
+        return Socialite::driver('github')->redirect();
+    }
+    public function handleProviderCallback()
+    {
+        $user = Socialite::driver('github')->user();
+        $user_data[]=$user["name"];
+        $user_data[]=$user["email"];
+        $user_data[]=$user["location"];
+        Session::put('userdata', $user_data);
+        return redirect('/participate');
     }
     public function store()
     {
