@@ -64,18 +64,27 @@
                 @endif
                     <div class="titleparticipate"><h1>Participate!</h1></div>
 
+                    <a href="{{url("participate/github")}}" class="btn btn-primary github">Participate with Github!</a>
                     {{ Html::ul($errors->all(),array('class' => 'errors')) }}
 
                     {{ Form::open(array('url' => 'participants')) }}
 
                     <div class="form-group">
                         {{ Form::label('name', 'Name') }}
-                        {{ Form::text('name', Input::old('name'), array('class' => 'form-control')) }}
+                        @if(Session::has('userdata'))
+                            {{ Form::text('name', Session::get('userdata')[0], array('class' => 'form-control')) }}
+                        @else
+                            {{ Form::text('name', Input::old('name'), array('class' => 'form-control')) }}
+                        @endif
                     </div>
 
                     <div class="form-group">
                         {{ Form::label('email', 'Email') }}
+                        @if(Session::has('userdata'))
+                            {{ Form::email('email', Session::get('userdata')[1], array('class' => 'form-control')) }}
+                        @else
                         {{ Form::email('email', Input::old('email'), array('class' => 'form-control')) }}
+                        @endif
                     </div>
 
                     <div class="form-group">
@@ -85,7 +94,11 @@
 
                     <div class="form-group">
                         {{ Form::label('city', 'City') }}
+                        @if(Session::has('userdata'))
+                            {{ Form::text('city', Session::get('userdata')[2], array('class' => 'form-control')) }}
+                        @else
                         {{ Form::text('city', Input::old('city'), array('class' => 'form-control')) }}
+                        @endif
                     </div>
 
                     <div class="form-group">

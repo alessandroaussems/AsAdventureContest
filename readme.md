@@ -9,4 +9,5 @@
 - run "composer install"
 - Make sure the Laravel Scheduler is running.
 - "crontab -e" and add this: * * * * * php /path/to/artisan schedule:run 1>> /dev/null 2>&amp;1
+- To allow the Github particpate function to work go to services.php and add your data
 - Finished!

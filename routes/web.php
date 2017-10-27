@@ -27,3 +27,6 @@ Route::resource('participants', 'ParticipantsController');
 Route::resource('periods', 'PeriodsController');
 
 Route::get('excel','ParticipantsController@excel')->name('excel')->middleware("auth");
+
+Route::get('participate/github', 'ParticipantsController@redirectToProvider');
+Route::get('participate/github/callback', 'ParticipantsController@handleProviderCallback');

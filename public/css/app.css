@@ -8,3 +8,17 @@
     list-style-type: none;
     padding: 0px;
 }
+.github
+{
+    background-color: black;
+    border-color: black;
+    color: white;
+    border-radius: 0px;
+    margin-top: 25px;
+}
+.github:hover
+{
+    background-color: white;
+    border-color: white;
+    color: black;
+}
