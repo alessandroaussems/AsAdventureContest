@@ -11,3 +11,6 @@
 - "crontab -e" and add this: * * * * * php /path/to/artisan schedule:run 1>> /dev/null 2>&amp;1
 - To allow the Github particpate function to work go to services.php and add your data
 - Finished!
+
+[Assignment](https://github.com/alessandroaussems/DevelopmentExamen/blob/master/opdracht.md)
+
