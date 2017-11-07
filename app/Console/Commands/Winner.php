@@ -43,14 +43,14 @@ class Winner extends Command
     {
         $periods = Period::all();
         $now=Carbon::today()->toDateString();
-        foreach ($periods as $key => $value)
+        foreach ($periods as $key => $value) //loop trough periods
         {
-            if($now == $value->enddate)
+            if($now == $value->enddate) //if today is the enddate of a period
             {
-                $period=$value->id;
-                if(Winners::where('period',$value->id)->get()->isEmpty())
+                $period=$value->id; // period is the id of the periods that ends today
+                if(Winners::where('period',$value->id)->get()->isEmpty()) // if there is no winner for the current period
                 {
-                    $winnerofparticipants=Participant::where("question",1)->orderByRaw("RAND()")
+                    $winnerofparticipants=Participant::where("question",1)->orderByRaw("RAND()")  // select all participants where question is true, order them random and pic the first one
                         ->take(1)
                         ->get();
                     $winner = new Winners();
@@ -58,12 +58,13 @@ class Winner extends Command
                     $winner->period          = $period;
                     $winner->save();
 
+                    //send mail because there is a new winner.
                     $texttosend="There is a new winner! The name is:".$winnerofparticipants[0]->name;
                     Mail::raw($texttosend, function($message)
                     {
                         $message->subject('There is a new winner! AsAdventure Contest');
                         $message->from('no-reply@asadventurecontest.be', 'As Adventure Contest');
-                        $message->to('alessandro.aussems@student.kdg.be');
+                        $message->to('asadventurecontest@alessandro.aussems.mtantwerp.eu');
                     });
                 }
             }

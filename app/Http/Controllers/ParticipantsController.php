@@ -34,6 +34,7 @@ class ParticipantsController extends Controller
      */
     public function index()
     {
+        //returns all particpants where enabled is set to true in the array participants
         $participants = Participant::where('enabled',1)->get();
 
         return view("participants")->with('participants',$participants);
@@ -41,10 +42,12 @@ class ParticipantsController extends Controller
     }
     public function redirectToProvider()
     {
+        //redirect to provider
         return Socialite::driver('github')->redirect();
     }
     public function handleProviderCallback()
     {
+        //retrieve data from provider and put it in the session "userdata"
         $user = Socialite::driver('github')->user();
         $user_data[]=$user["name"];
         $user_data[]=$user["email"];
@@ -54,6 +57,7 @@ class ParticipantsController extends Controller
     }
     public function store()
     {
+        //store a new participant
         $periods=Period::all();
         $now=Carbon::now();
         $period=0;
@@ -112,30 +116,25 @@ class ParticipantsController extends Controller
     }
     public function destroy($id)
     {
-        // delete
+        //set enabled to false in the table participants
         $participant = Participant::find($id);
         $participant->enabled       = 0;
         $participant->save();
-
-        // redirect
         Session::flash('message', 'Successfully deleted participant!');
         return Redirect::to('participants');
     }
     public function excel()
     {
+        //create sheet from array participants where enabled is true
         Excel::create('Participants', function($excel) {
 
             $excel->sheet('Participants', function($sheet) {
 
+
                 $sheet->fromArray(Participant::where('enabled',1)->get(), null, 'A1', false, false);
 
+
             });
-        })->download("xlsx"); //->store("xlsx", false, true)['full'];
-        Mail::raw("In attachment excelfile of participants ", function($message)
-        {
-            $message->subject('ExcelFile Participants!');
-            $message->from('no-reply@asadventurecontest.be', 'As Adventure Contest');
-            $message->to('alessandro.aussems@student.kdg.be');
-        });
+        })->download("xlsx");
     }
 }

@@ -30,6 +30,7 @@ class PeriodsController extends Controller
      */
     public function index()
     {
+        //return all periods in the array periods
         $periods = Period::all();
 
         return view("periods")->with('periods',$periods);
@@ -37,21 +38,19 @@ class PeriodsController extends Controller
     }
     public function edit($id)
     {
+        //return template edit period with data from selected period
         $period = Period::find($id);
         return view("editperiod")->with('period', $period);
     }
     public function update($id)
     {
         // validate
-        // read more on validation at http://laravel.com/docs/validation
         $rules = array(
             'startdate'      => 'required|date',
             'enddate'     => 'required|date' ,
 
         );
         $validator = Validator::make(Input::all(), $rules);
-
-        // process the login
         if ($validator->fails()) {
             return Redirect::to('periods/'. $id .'/edit')
                 ->withErrors($validator)
@@ -61,13 +60,14 @@ class PeriodsController extends Controller
             $formatstart = date('Y-m-d',$time_start);
             $time_end = strtotime(Input::get('enddate'));
             $formatend = date('Y-m-d',$time_end);
-            // store
+
+
             $period                 = Period::find($id);
             $period->startdate      = $formatstart;
             $period->enddate         = $formatend;
             $period->save();
 
-            // redirect
+
             Session::flash('message', 'Successfully added!');
             return Redirect::to('/periods');
         }

@@ -9,6 +9,7 @@ class HomeController extends Controller
 {
     public function index()
     {
+        //get all the winners and return in the array winners
         $winners=Winners::
         join('periods', 'period', '=', 'periods.id')
         ->join('participants', 'participant', '=', 'participants.id')

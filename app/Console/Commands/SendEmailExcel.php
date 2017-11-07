@@ -39,6 +39,7 @@ class SendEmailExcel extends Command
      */
     public function handle()
     {
+        //create an excelfile of particpants where datajoined is today and enabled is set to true
         Excel::create("Participants", function($excel) {
 
             $excel->sheet("Participants", function($sheet) {
@@ -46,12 +47,14 @@ class SendEmailExcel extends Command
                 $sheet->fromArray(Participant::where('enabled',1)->where('date_participated',Carbon::today())->get(), null, 'A1', false, false);
 
             });
-        })->store('xls', false, true)["full"];
+        })->store('xls', false, true)["full"]; //store the created excelfile
+
+        //Mail the file we just stored
         Mail::raw("In attachment excelfile of participants who joined today!", function($message)
         {
             $message->subject('ExcelFile Participants!');
             $message->from('no-reply@asadventurecontest.be', 'As Adventure Contest');
-            $message->to('alessandro.aussems@student.kdg.be');
+            $message->to('asadventurecontest@alessandro.aussems.mtantwerp.eu');
             $message->attach( realpath('storage/exports/Participants.xls'));
         });
     }

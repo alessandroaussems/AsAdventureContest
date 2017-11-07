@@ -12,21 +12,23 @@
 */
 
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index'); //run the function index of the homecontroller on '/' url
 
-Auth::routes();
+Auth::routes(); //routes for authentication
 
-Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard')->middleware('auth'); // on url '/dashboard' return dashboard.template, u need authentication for this.
 
 Route::get('/participate', function () {
     return view('participate');
-});
+});// onr url "/participate' return template participate.template
 
-Route::resource('participants', 'ParticipantsController');
+Route::resource('participants', 'ParticipantsController'); //resource routes for Participants (include create/store/delete/update)
 
-Route::resource('periods', 'PeriodsController');
+Route::resource('periods', 'PeriodsController'); //resource routes for Periods (include create/store/delete/update)
 
-Route::get('excel','ParticipantsController@excel')->name('excel')->middleware("auth");
+Route::get('excel','ParticipantsController@excel')->name('excel')->middleware("auth"); //create excel file from participants (authentication needed)
 
-Route::get('participate/github', 'ParticipantsController@redirectToProvider');
-Route::get('participate/github/callback', 'ParticipantsController@handleProviderCallback');
+Route::get('participate/github', 'ParticipantsController@redirectToProvider');//OAuth
+Route::get('participate/github/callback', 'ParticipantsController@handleProviderCallback'); //OAuth
