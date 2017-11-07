@@ -7,7 +7,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Edit period!</div>
 
-                    {{ Html::ul($errors->all()) }}
+                    {{ Html::ul($errors->all(),array('class' => 'errors')) }}
 
                     {{ Form::model($period, array('route' => array('periods.update', $period->id), 'method' => 'PUT')) }}
 

@@ -22,3 +22,9 @@
     border-color: white;
     color: black;
 }
+.errors
+{
+    color: red;
+    list-style-type: none;
+    padding: 0px;
+}
