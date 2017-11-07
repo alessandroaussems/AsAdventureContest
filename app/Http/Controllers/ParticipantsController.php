@@ -136,7 +136,6 @@ class ParticipantsController extends Controller
             $message->subject('ExcelFile Participants!');
             $message->from('no-reply@asadventurecontest.be', 'As Adventure Contest');
             $message->to('alessandro.aussems@student.kdg.be');
-            //$message->attach("storage/exports/Participants.xlsx", 'Participants.xlsx');
         });
     }
 }

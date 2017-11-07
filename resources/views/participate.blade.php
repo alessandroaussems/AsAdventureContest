@@ -106,7 +106,7 @@
                         {{ Form::text('question', Input::old('question'), array('class' => 'form-control')) }}
                     </div>
 
-                    {{ Form::submit('Participate!', array('class' => 'btn btn-primary participate')) }}
+                    {{ Form::submit('Participate!', array('class' => 'btn btn-primary participate center-block')) }}
 
                     {{ Form::close() }}
 

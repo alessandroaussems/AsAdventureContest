@@ -13,12 +13,12 @@
 
                     <div class="form-group">
                         {{ Form::label('startdate', 'Startdate') }}
-                        {{ Form::text('startdate', null, ['class' => 'form-control', 'readonly' => 'true']) }}
+                        {{ Form::text('startdate', null, ['class' => 'form-control']) }}
                     </div>
 
                     <div class="form-group">
                         {{ Form::label('enddate', 'Enddate') }}
-                        {{ Form::text('enddate', null,['class' => 'form-control', 'readonly' => 'true']) }}
+                        {{ Form::text('enddate', null,['class' => 'form-control']) }}
                     </div>
 
 

@@ -34,7 +34,7 @@
                     <form ></form>
                     {{ Form::open(array('url' => 'participants/' . $value->id, 'class' => 'pull-right')) }}
                     {{ Form::hidden('_method', 'DELETE') }}
-                    {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
+                    {{ Form::submit('Disable', array('class' => 'btn btn-danger')) }}
                     {{ Form::close() }}
 
                 </td>

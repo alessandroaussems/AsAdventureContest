@@ -50,7 +50,6 @@ class Winner extends Command
                 $period=$value->id;
                 if(Winners::where('period',$value->id)->get()->isEmpty())
                 {
-                    //echo "NEW WINNER";
                     $winnerofparticipants=Participant::where("question",1)->orderByRaw("RAND()")
                         ->take(1)
                         ->get();
@@ -59,7 +58,7 @@ class Winner extends Command
                     $winner->period          = $period;
                     $winner->save();
 
-                    $texttosend="Er is een nieuwe winnaar! Zijn naam is: ".$winnerofparticipants[0]->name;
+                    $texttosend="There is a new winner! The name is:".$winnerofparticipants[0]->name;
                     Mail::raw($texttosend, function($message)
                     {
                         $message->subject('There is a new winner! AsAdventure Contest');
