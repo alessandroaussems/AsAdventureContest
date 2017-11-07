@@ -8,7 +8,7 @@
 - Create a .env file based on the .env.example
 - Upload all the files to the server (NOT! the /vendor folder)
 - Upload the .htaccess file, it will hide the /public from the url
-- run "composer install"
+- Run "composer install"
 - Run "php artisan migrate"
 - Run "php artisan db:seed"
 - Make sure the Laravel Scheduler is running.
