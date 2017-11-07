@@ -37,7 +37,7 @@ return [
     'github' => [
         'client_id' => '4ead3042bb0b04f08161',
         'client_secret' => '38bf6fc1725ba23a2d4a904ad0202f52b78827d6',
-        'redirect' => 'http://developmentexamen.dev/participate/github/callback',
+        'redirect' => 'https://asadventurecontest.alessandro.aussems.mtantwerp.eu/participate/github/callback',
     ],
 
 ];
