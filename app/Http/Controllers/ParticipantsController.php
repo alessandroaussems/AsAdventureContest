@@ -120,7 +120,7 @@ class ParticipantsController extends Controller
         $participant = Participant::find($id);
         $participant->enabled       = 0;
         $participant->save();
-        Session::flash('message', 'Successfully deleted participant!');
+        Session::flash('message', 'Successfully disabled participant!');
         return Redirect::to('participants');
     }
     public function excel()
