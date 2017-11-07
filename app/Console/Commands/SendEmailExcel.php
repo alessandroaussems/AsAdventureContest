@@ -43,8 +43,9 @@ class SendEmailExcel extends Command
         Excel::create("Participants", function($excel) {
 
             $excel->sheet("Participants", function($sheet) {
+                $sheet->row(1, array('ID', 'Name','Email','Address','City','Question','IP','Period','Date participated','Period'));
 
-                $sheet->fromArray(Participant::where('enabled',1)->where('date_participated',Carbon::today())->get(), null, 'A1', false, false);
+                $sheet->fromArray(Participant::where('enabled',1)->where('date_participated',Carbon::today())->get(), null, 'A2', false, false);
 
             });
         })->store('xls', false, true)["full"]; //store the created excelfile

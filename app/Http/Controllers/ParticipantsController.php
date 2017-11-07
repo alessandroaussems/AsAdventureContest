@@ -130,8 +130,9 @@ class ParticipantsController extends Controller
 
             $excel->sheet('Participants', function($sheet) {
 
+                $sheet->row(1, array('ID', 'Name','Email','Address','City','Question','IP','Period','Date participated','Period'));
 
-                $sheet->fromArray(Participant::where('enabled',1)->get(), null, 'A1', false, false);
+                $sheet->fromArray(Participant::where('enabled',1)->get(), null, 'A2', false, false);
 
 
             });
