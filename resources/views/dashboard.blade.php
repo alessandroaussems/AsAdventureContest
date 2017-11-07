@@ -14,9 +14,9 @@
                         </div>
                     @endif
                      <ul>
-                         <li><a href="{{ route('register') }}">Register a new user</a></li>
-                         <li><a href="{{ url('participants') }}">View participants</a></li> <!-- URL because route returns undefined -->
-                         <li><a href="{{ url('periods') }}">View periods</a></li> <!-- URL because route returns undefined -->
+                         <li><a href="{{ route('register') }}">Create new admin</a></li>
+                         <li><a href="{{ url('participants') }}">Participants</a></li> <!-- URL because route returns undefined -->
+                         <li><a href="{{ url('periods') }}">Periods</a></li> <!-- URL because route returns undefined -->
 
                      </ul>
                 </div>
