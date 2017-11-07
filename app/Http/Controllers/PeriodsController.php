@@ -68,8 +68,8 @@ class PeriodsController extends Controller
             $period->save();
 
 
-            Session::flash('message', 'Successfully added!');
-            return Redirect::to('/periods');
+            Session::flash('status', 'Successfully changed period!');
+            return Redirect::to('/dashboard');
         }
     }
 }

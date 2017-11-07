@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use App\Period;
 use App\Participant;
 use App\Winners;
+use App\AdminMail;
 
 class Winner extends Command
 {
@@ -64,7 +65,7 @@ class Winner extends Command
                     {
                         $message->subject('There is a new winner! AsAdventure Contest');
                         $message->from('no-reply@asadventurecontest.be', 'As Adventure Contest');
-                        $message->to('asadventurecontest@alessandro.aussems.mtantwerp.eu');
+                        $message->to(AdminMail::find(1)->email);
                     });
                 }
             }

@@ -16,5 +16,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'asadventurecontest@alessandro.aussems.mtantwerp.eu',
             'password' => bcrypt('asadmin1'),
         ]);
+        DB::table('adminmail')->insert([
+            'email' => 'asadventurecontest@alessandro.aussems.mtantwerp.eu',
+        ]);
     }
 }

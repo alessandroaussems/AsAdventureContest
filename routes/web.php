@@ -28,6 +28,8 @@ Route::resource('participants', 'ParticipantsController'); //resource routes for
 
 Route::resource('periods', 'PeriodsController'); //resource routes for Periods (include create/store/delete/update)
 
+Route::resource('adminmail', 'AdminMailController'); //resource routes for AdminMail (include create/store/delete/update)
+
 Route::get('excel','ParticipantsController@excel')->name('excel')->middleware("auth"); //create excel file from participants (authentication needed)
 
 Route::get('participate/github', 'ParticipantsController@redirectToProvider');//OAuth

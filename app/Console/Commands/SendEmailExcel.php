@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 use App\Participant;
+use App\AdminMail;
 use Illuminate\Console\Command;
 use Excel;
 use Carbon\Carbon;
@@ -55,7 +56,7 @@ class SendEmailExcel extends Command
         {
             $message->subject('ExcelFile Participants!');
             $message->from('no-reply@asadventurecontest.be', 'As Adventure Contest');
-            $message->to('asadventurecontest@alessandro.aussems.mtantwerp.eu');
+            $message->to(AdminMail::find(1)->email);
             $message->attach( realpath('storage/exports/Participants.xls'));
         });
     }
