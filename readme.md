@@ -1,6 +1,8 @@
 # As Adventure Contest
 - A fictional contest where you can win a voucher of €500.
 - Online version: https://asadventurecontest.alessandro.aussems.mtantwerp.eu/
+- Screencast: https://youtu.be/fzh8OcldeaI
+- C9.io: https://ide.c9.io/alessandroaussems/developmentexamen
 - Userdata:
     - username: asadventurecontest@alessandro.aussems.mtantwerp.eu
     - password: asadmin1
