@@ -2,11 +2,7 @@
 - A fictional contest where you can win a voucher of €500.
 - Online version: https://asadventurecontest.alessandro.aussems.mtantwerp.eu/
 - Screencast: https://youtu.be/fzh8OcldeaI
-- C9.io(IDE): https://ide.c9.io/alessandroaussems/developmentexamen
-- C9.io(ONLINE): http://developmentexamen-alessandroaussems.c9users.io/
-- Userdata:
-    - username: asadventurecontest@alessandro.aussems.mtantwerp.eu
-    - password: asadmin1
+
 ### Deploy
 - Create a .env file based on the .env.example
 - Upload all the files to the server (NOT! the /vendor folder)
