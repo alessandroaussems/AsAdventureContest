@@ -1,6 +1,5 @@
 # As Adventure Contest
 - A fictional contest where you can win a voucher of €500.
-- Online version: https://asadventurecontest.alessandro.aussems.mtantwerp.eu/
 - Screencast: https://youtu.be/fzh8OcldeaI
 
 ### Deploy
